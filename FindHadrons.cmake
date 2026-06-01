@@ -35,6 +35,9 @@ if(Hadrons_FOUND)
   if ("nvcc" IN_LIST Hadrons_CXX)
     message(STATUS "Hadrons uses CUDA")
     set(Hadrons_CUDA On)
+    enable_language(CUDA)
+    set(CMAKE_CUDA_COMPILER nvcc)
+    set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -x cu")
   endif()
   execute_process(
     COMMAND ${Hadrons_CONFIG} --cxxflags OUTPUT_VARIABLE Hadrons_CXXFLAGS 
